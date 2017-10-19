@@ -18,7 +18,7 @@ const bot = {
   //Initial question with options
   introduceToUser(userId) {
     this.web.im.open(userId)
-      .then(resp => this.web.chat.postMessage(resp.channel.id, 'Good Morning.', {
+      .then(resp => this.web.chat.postMessage(resp.channel.id, 'Good Morning!', {
         attachments: [
           {
             color: '#5A352D',

@@ -19,6 +19,7 @@ const slackInteractiveMessages = require('@slack/interactive-messages');
 const cloneDeep = require('lodash.clonedeep');
 const bot = require('./modules/bot');
 var sched = require('node-cron');
+var sleep = require('sleep');
 
 
 // --- Slack Events ---
@@ -28,17 +29,18 @@ slackEvents.on('team_join', (event) => {
   bot.introduceToUser(event.user.id);
 });
 */
-//------Replace by scheduling code------ 
+
 
 // Scheduling code created
 sched.schedule('0 9 * * 1,2,3,4,5', function(){
   //console.log('running a task every minute');
   //condoel.log("Test");
   //bot.sendMessage("D7JBPKD8B","Calvin is awesome");
-  bot.sendMessage("D7JBPKD8B",bot.introduceToUser("U6WEA6ULA"))
+  bot.sendMessage("D7LJ7H9U4",bot.introduceToUser("U7LJ7GXBN"))
 });
 
 
+//------Replace by scheduling code------ 
 slackEvents.on('message', (event) => {
   console.log("Event Received");
   // Filter out messages from this bot itself or updates to messages
@@ -92,6 +94,18 @@ slackMessages.action('standup:start', (payload, respond) => {
   {
       var updatedMessage = acknowledgeActionFromMessage(payload.original_message, 'standup:start',
                                                       'I will remind you in 15 minutes');
+      /*async function init(){
+       console.log(1)
+      await sleep(1000)
+      bot.sendMessage("D7JBPKD8B",bot.introduceToUser("U6WEA6ULA"));
+        }
+      function sleep(ms){
+          return new Promise(resolve=>{
+        setTimeout(resolve,ms)
+    })
+}*/
+      
+    
   }
    else
   {
